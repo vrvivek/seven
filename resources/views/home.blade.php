@@ -13,8 +13,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <?php //print_r(session()->all()) ?>
                     You are logged in!
+                </div>
+                <div class="card-body">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">{{ session('message') }}</div>
+                    @elseif(session()->has('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    <form action="/upload" method='post' enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name='image'/>
+                        <input type="submit" value='Upload' />
+                    </form>
                 </div>
             </div>
         </div>

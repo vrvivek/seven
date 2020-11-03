@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return env('APP_NAME');
+    //return view('welcome');
+    return View::make('welcome');
 });
 
 Route::get('/Hello',function(){
@@ -22,6 +24,8 @@ Route::get('/Hello',function(){
 });
 
 Route::get('/user','UserController@index');
+
+Route::post('/upload','UserController@uploadImage');
 
 Auth::routes();
 
